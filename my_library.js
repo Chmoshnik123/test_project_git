@@ -36,3 +36,10 @@ class Library{
     }
     const library = new Library('Текстовая библиотека');
 
+    library.addBook('JavaScript для начинающих', 'Иван Петров', 2023, 'JS-001', 5);
+    library.addBook('React продвинутый', 'Мария Сидорова', 2024, 'REACT-002', 5 );
+    library.addBook('React продвинутый','Мария Сидорова', 2024, 'REACT-002', 1);
+    console.log(library.books);
+
+    const foundBooks = library.findBook('JavaScript');
+    console.log(foundBooks.length);
