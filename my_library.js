@@ -34,6 +34,15 @@ class Library{
             return newBook;
         }
     }
+    getBookStats() {
+const totalQuantity = this.books.reduce((accum, val) => accum + val.totalQuantity, 0);
+const availableQuantity = this.books.reduce((accum, val) => accum + val.availableQuantity, 0); // Доступно для выдачи
+const statistic = {
+totalQuantity: totalQuantity,
+availableQuantity: availableQuantity,
+issued: totalQuantity - availableQuantity,
+mostPopularBooks: this.books.sort((a, b) => b.borrowedBy.length - a.borrowedBy.length).slice(0, 2)
+}
     const library = new Library('Текстовая библиотека');
 
     library.addBook('JavaScript для начинающих', 'Иван Петров', 2023, 'JS-001', 5);
@@ -43,3 +52,4 @@ class Library{
 
     const foundBooks = library.findBook('JavaScript');
     console.log(foundBooks.length);
+    }
